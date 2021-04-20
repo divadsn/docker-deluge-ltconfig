@@ -4,7 +4,7 @@ set -x
 
 # Install dependencies
 apk --update add --no-cache \
-    boost-python3 boost-system libgcc libstdc++ openssl python3 py3-pip
+    boost-python3 boost-system libgcc libstdc++ libffi zlib libjpeg-turbo openssl python3 py3-pip
 apk --update add --no-cache --virtual=build-dependencies \
     boost-build boost-dev cmake coreutils curl g++ gcc git jq py3-setuptools python3-dev openssl-dev samurai build-base libffi-dev zlib-dev libjpeg-turbo-dev cargo
 
