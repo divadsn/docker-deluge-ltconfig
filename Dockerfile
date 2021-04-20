@@ -8,9 +8,9 @@ ENV USER=deluge \
     UID=101 \
     GID=101
 
-ADD build.sh docker-entrypoint.sh /usr/local/bin/
+ADD scripts/*.sh docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/*.sh && build.sh
 
-EXPOSE 8112/tcp 53160/tcp 53160/udp 58846/tcp 
+EXPOSE 8112/tcp 53160/tcp 53160/udp 58846/tcp
 VOLUME ["/config", "/data"]
 ENTRYPOINT ["docker-entrypoint.sh"]
