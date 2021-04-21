@@ -10,7 +10,7 @@ apk update
 apk add --no-cache \
     curl geoip libgcc libstdc++ libffi libjpeg-turbo libtorrent-rasterbar@testing openssl python3 py3-pip py3-libtorrent-rasterbar@testing tzdata zlib
 apk add --no-cache --virtual=build-dependencies \
-    build-base cargo git libffi-dev libjpeg-turbo-dev openssl-dev python3-dev zlib-dev
+    build-base cargo geoip-dev git libffi-dev libjpeg-turbo-dev openssl-dev python3-dev zlib-dev
 
 # Build deluge
 cd /tmp
@@ -18,7 +18,7 @@ git clone --branch deluge-${DELUGE_VERSION} --depth 1 git://deluge-torrent.org/d
 curl -s "https://git.deluge-torrent.org/deluge/patch/?id=d6c96d629183e8bab2167ef56457f994017e7c85" | git apply
 curl -s "https://git.deluge-torrent.org/deluge/patch/?id=351664ec071daa04161577c6a1c949ed0f2c3206" | git apply
 pip3 install --no-cache-dir -U wheel setuptools pip
-pip3 install --no-cache-dir -U -r requirements.txt
+pip3 install --no-cache-dir -U -r requirements.txt geoip
 python3 setup.py build
 python3 setup.py install
 
