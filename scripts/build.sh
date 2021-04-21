@@ -38,5 +38,5 @@ EOF
 
 # Cleanup
 apk del --purge build-dependencies
-rm -rf /tmp/* /root/.cache /root/.cargo
+rm -rf /tmp/* /var/cache/apk/* /root/.cache /root/.cargo
 rm -- "$0"
