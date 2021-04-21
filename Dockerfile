@@ -1,7 +1,7 @@
-FROM alpine:3.13.5
+FROM alpine:edge
 LABEL maintainer="David Sn <divad.nnamtdeis@gmail.com>"
 
-ARG LIBTORRENT_VERSION=2.0.3
+ARG LIBTORRENT_VERSION=1.2.10
 ARG DELUGE_VERSION=2.0.3
 
 ENV USER=deluge \
