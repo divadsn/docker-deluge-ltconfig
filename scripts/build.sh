@@ -29,6 +29,13 @@ python3 setup.py bdist_egg
 mkdir -p /usr/share/deluge/plugins
 cp dist/ltConfig-*.egg /usr/share/deluge/plugins
 
+# Fix missing geoip legacy database
+curl -s "https://dl.miyuru.lk/geoip/maxmind/country/maxmind.dat.gz" | gunzip > /usr/share/GeoIP/GeoIP.dat
+cat << EOF > /etc/periodic/monthly/geoip
+#!/bin/sh
+curl -s "https://dl.miyuru.lk/geoip/maxmind/country/maxmind.dat.gz" | gunzip > /usr/share/GeoIP/GeoIP.dat
+EOF
+
 # Cleanup
 apk del --purge build-dependencies
 rm -rf /tmp/* /root/.cache /root/.cargo
