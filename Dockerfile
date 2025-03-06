@@ -3,11 +3,11 @@ LABEL maintainer="David Sn <divad.nnamtdeis@gmail.com>"
 
 ARG LIBTORRENT_VERSION=2.0.11-r0
 ARG DELUGE_VERSION=2.1.1
+ARG GEOIP_DB_URL="https://dl.miyuru.lk/geoip/dbip/country/dbip4.dat.gz"
 
 ENV USER=deluge \
     UID=101 \
     GID=101 \
-    GEOIP_DB_URL="https://dl.miyuru.lk/geoip/maxmind/country/maxmind.dat.gz" \
     PYTHON_EGG_CACHE="/config/plugins/.python-eggs"
 
 RUN set -ex && \
@@ -19,11 +19,11 @@ RUN set -ex && \
     apk add --no-cache \
         curl geoip libtorrent-rasterbar=${LIBTORRENT_VERSION} python3 \
         py3-twisted py3-openssl py3-rencode py3-xdg py3-zope-interface \
-        py3-chardet py3-setproctitle py3-pillow py3-mako py3-ifaddr \
+        py3-chardet py3-setproctitle py3-pillow py3-mako py3-setuptools py3-ifaddr \
         py3-distro py3-libtorrent-rasterbar=${LIBTORRENT_VERSION} py3-geoip@testing && \
 
     # Install build dependencies
-    apk add --no-cache --virtual=build-dependencies build-base git python3-dev py3-pip py3-setuptools && \
+    apk add --no-cache --virtual=build-dependencies build-base git python3-dev py3-pip py3-rjsmin && \
 
     # Build deluge
     cd /tmp && \
