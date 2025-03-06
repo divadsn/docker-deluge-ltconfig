@@ -18,5 +18,5 @@ else
     chown $USER:$USER /config/plugins/ltConfig-*.egg
 fi
 
-# Run deluge
-su $USER -s /bin/sh -c run_deluge.sh
+# Start deluge
+su $USER -s /bin/sh -c start_deluge.sh
